@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/light"
     android:visibility="visible"
-    tools:context=".ReservationFormFragment2">
+    tools:context=".ReservationFormFrag2">
 
     <TextView
         android:layout_width="wrap_content"

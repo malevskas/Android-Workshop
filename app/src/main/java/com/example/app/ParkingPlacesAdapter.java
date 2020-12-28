@@ -2,6 +2,8 @@ package com.example.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,11 @@ public class ParkingPlacesAdapter extends RecyclerView.Adapter<ParkingPlacesAdap
     private List<String> myList;
     private int parkingLayout;
     private Context myContext;
+    private String grad;
+    private String datum;
+    private String vreme;
+    private DBHelper db;
+    private String username;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -25,9 +32,7 @@ public class ParkingPlacesAdapter extends RecyclerView.Adapter<ParkingPlacesAdap
         public TextView free;
         public TextView taken;
         public Button button;
-        public TextView grad;
-        public TextView datum;
-        public TextView vreme;
+        public TextView error;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -35,16 +40,18 @@ public class ParkingPlacesAdapter extends RecyclerView.Adapter<ParkingPlacesAdap
             button = (Button) itemView.findViewById(R.id.nextButton);
             free = (TextView) itemView.findViewById(R.id.free);
             taken = (TextView) itemView.findViewById(R.id.taken);
-            grad = (TextView) itemView.findViewById(R.id.grad);
-            datum = (TextView) itemView.findViewById(R.id.datum);
-            vreme = (TextView) itemView.findViewById(R.id.vreme);
+            error = (TextView) itemView.findViewById(R.id.error);
+            error.setVisibility(View.INVISIBLE);
         }
     }
 
-    public ParkingPlacesAdapter(List<String> myList, int parkingLayout, Context myContext) {
+    public ParkingPlacesAdapter(List<String> myList, int parkingLayout, Context myContext, String grad, String datum, String vreme) {
         this.myList = myList;
         this.parkingLayout = parkingLayout;
         this.myContext = myContext;
+        this.grad = grad;
+        this.datum = datum;
+        this.vreme = vreme;
     }
 
     @Override
@@ -60,19 +67,27 @@ public class ParkingPlacesAdapter extends RecyclerView.Adapter<ParkingPlacesAdap
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ReservationConfirmation.class);
-                intent.putExtra("grad", viewHolder.grad.getText().toString());
-                intent.putExtra("datum", viewHolder.datum.getText().toString());
-                intent.putExtra("vreme", viewHolder.vreme.getText().toString());
-                intent.putExtra("parking", viewHolder.text.getText().toString());
-                v.getContext().startActivity(intent);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(myContext);
+                String username = prefs.getString("username", "null");
+                db = new DBHelper(myContext);
+                boolean check = db.addRes(username, grad, datum, vreme, viewHolder.text.getText().toString());
+                if(check) {
+                    Intent intent = new Intent(myContext, ReservationConfirmation.class);
+                    intent.putExtra("grad", grad);
+                    intent.putExtra("datum", datum);
+                    intent.putExtra("vreme", vreme);
+                    intent.putExtra("lokacija", viewHolder.text.getText().toString());
+                    myContext.startActivity(intent);
+                }
+                else {
+                    viewHolder.error.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return myList == null ? 0 : myList.size();
     }
-
-
 }

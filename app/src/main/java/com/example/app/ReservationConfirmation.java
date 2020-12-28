@@ -5,9 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ReservationConfirmation extends AppCompatActivity {
+
+    String grad;
+    String lokacija;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,16 +20,10 @@ public class ReservationConfirmation extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+    }
 
-        Intent intent = getIntent();
-        String grad = intent.getStringExtra("grad");
-        TextView gradot = (TextView) findViewById(R.id.grad);
-        gradot.setText(grad);
-        String datum = intent.getStringExtra("datum");
-        TextView datumot = (TextView) findViewById(R.id.datum);
-        datumot.setText(datum);
-        String vreme = intent.getStringExtra("vreme");
-        TextView vremeto = (TextView) findViewById(R.id.vreme);
-        vremeto.setText(vreme);
+    public void myRes2(View view) {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
     }
 }

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Cities"
     android:background="@color/light"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReservationConfirmation">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -20,7 +20,8 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="end">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,25 +30,44 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:textSize="23sp"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="МоиРезервации"
-                android:textSize="13sp"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/teal_700"
                 android:visibility="visible"
-                android:onClick="myRes"
+                android:onClick="myRes2"
                 app:backgroundTint="@color/white" />
 
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rView"
-        android:scrollbars="vertical"/>
+        android:orientation="horizontal">
+
+        <fragment
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment1"
+            android:layout_marginTop="15dp"
+            android:name="com.example.app.ReservationConfirmationFrag1"
+            tools:layout="@layout/res_conf_frag1" />
+
+        <fragment
+            android:layout_width="391dp"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment2"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:layout="@layout/maps" />
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

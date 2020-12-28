@@ -6,7 +6,7 @@
     android:background="@color/light"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".ReservationFormFragment1">
+    tools:context=".ReservationFormFrag1">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Локација: "
+            android:text="Град: "
             android:textColor="@color/gray"
             android:textSize="18sp"/>
 

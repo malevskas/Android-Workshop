@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Cities extends AppCompatActivity {
 
     RecyclerView myRecyclerView;
     CityAdapter adapter;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,9 @@ public class Cities extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
-        List<String> gradovi = Arrays.asList("Скопје", "Куманово", "Тетово", "Охрид", "Битола", "Гевгелија",
-                "Гостивар", "Велес", "Штип", "Прилеп");
+        db = new DBHelper(this);
+
+        List<String> gradovi = Arrays.asList("Скопје", "Куманово", "Тетово", "Охрид", "Битола");
 
         myRecyclerView = (RecyclerView) findViewById(R.id.rView);
         myRecyclerView.setHasFixedSize(true);
@@ -34,5 +38,10 @@ public class Cities extends AppCompatActivity {
 
         adapter = new CityAdapter(gradovi, R.layout.cities_layout, this);
         myRecyclerView.setAdapter(adapter);
+    }
+
+    public void myRes(View view) {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
     }
 }

@@ -31,14 +31,17 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:textColor="@color/white"
-                android:textSize="23sp"/>
+                android:textSize="20sp"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="МоиРезервации"
+                android:textSize="13sp"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/teal_700"
                 android:visibility="visible"
+                android:onClick="myRes3"
                 app:backgroundTint="@color/white" />
 
         </RelativeLayout>
@@ -47,16 +50,17 @@
 
     <fragment
         android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:id="@+id/fragment1"
-        android:name="com.example.app.ReservationFormFragment1"
+        android:name="com.example.app.ReservationFormFrag1"
         tools:layout="@layout/res_form_frag1" />
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment2"
-        android:name="com.example.app.ReservationFormFragment2"
+        android:name="com.example.app.ReservationFormFrag2"
         tools:layout="@layout/res_form_frag2" />
 
 </LinearLayout>

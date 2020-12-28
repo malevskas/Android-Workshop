@@ -1,0 +1,6 @@
+Ramstore Mall
+42.0092
+20.9711
+Palma Mall
+42.0051
+20.9896

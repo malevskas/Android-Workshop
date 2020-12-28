@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ReservationForm extends AppCompatActivity {
@@ -16,5 +17,10 @@ public class ReservationForm extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    public void myRes3(View view) {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
     }
 }

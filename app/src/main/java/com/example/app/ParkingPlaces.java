@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -26,16 +27,11 @@ public class ParkingPlaces extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
-        List<String> pSkopje = Arrays.asList("yeyey", "hdhdh");
-        List<String> pKumanovo = Arrays.asList("1");
-        List<String> pTetovo = Arrays.asList("1");
-        List<String> pOhrid = Arrays.asList("1");
-        List<String> pBitola = Arrays.asList("1");
-        List<String> pGevgelija = Arrays.asList("1");
-        List<String> pGostivar = Arrays.asList("1");
-        List<String> pVeles = Arrays.asList("1");
-        List<String> pStip = Arrays.asList("1");
-        List<String> pPrilep = Arrays.asList("1");
+        List<String> pSkopje = Arrays.asList("Александар Палас", "Нова Македонија", "Олимпико", "Хотел Русија");
+        List<String> pKumanovo = Arrays.asList("ШТУЗ", "Кит Го");
+        List<String> pTetovo = Arrays.asList("Ramstore Mall", "Palma Mall");
+        List<String> pOhrid = Arrays.asList("Пристаниште", "Чинар", "Билјанини Извори");
+        List<String> pBitola = Arrays.asList("Широк Сокак", "Технички Факултет");
         List<String> lista = Arrays.asList();
 
         Intent intent = getIntent();
@@ -64,28 +60,18 @@ public class ParkingPlaces extends AppCompatActivity {
         if(grad.equals("Битола")) {
             lista = pBitola;
         }
-        if(grad.equals("Гевгелија")) {
-            lista = pGevgelija;
-        }
-        if(grad.equals("Гостивар")) {
-            lista = pGostivar;
-        }
-        if(grad.equals("Велес")) {
-            lista = pVeles;
-        }
-        if(grad.equals("Штип")) {
-            lista = pStip;
-        }
-        if(grad.equals("Прилеп")) {
-            lista = pPrilep;
-        }
 
         myRecyclerView = (RecyclerView) findViewById(R.id.placesRview);
         myRecyclerView.setHasFixedSize(true);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new ParkingPlacesAdapter(lista, R.layout.parking_places_layout, this);
+        adapter = new ParkingPlacesAdapter(lista, R.layout.parking_places_layout, this, grad, datum, vreme);
         myRecyclerView.setAdapter(adapter);
+    }
+
+    public void myRes1(View view) {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
     }
 }

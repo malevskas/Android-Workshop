@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">APP</string>
+    <string name="app_name">ParkingApp</string>
     <string name="next">Следен чекор</string>
     <string name="rez">Резервирај</string>
     <string name="choose">Одбери</string>
@@ -29,4 +29,5 @@
         <item>06:00-07:00</item>
         <item>00:70-08:00</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

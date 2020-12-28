@@ -30,13 +30,16 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:textColor="@color/white"
-                android:textSize="23sp"/>
+                android:textSize="20sp"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="МоиРезервации"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/teal_700"
+                android:textSize="13sp"
+                android:onClick="myRes2"
                 android:visibility="visible"
                 app:backgroundTint="@color/white" />
 
@@ -46,68 +49,24 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Локација: "
-            android:textColor="@color/gray"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/grad"
-            android:textColor="@color/teal_700"
-            android:textStyle="italic"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:text="Вашата резервација е успешна!"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <fragment
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Датум: "
-            android:textColor="@color/gray"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/datum"
-            android:textColor="@color/teal_700"
-            android:textStyle="italic"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Време: "
-            android:textColor="@color/gray"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/vreme"
-            android:textColor="@color/teal_700"
-            android:textStyle="italic"
-            android:textSize="20dp" />
-
-    </LinearLayout>
+        android:layout_marginTop="15dp"
+        android:id="@+id/fragment1"
+        android:name="com.example.app.ReservationConfirmationFrag1"
+        tools:layout="@layout/res_conf_frag1" />
 
 </LinearLayout>
